@@ -1,0 +1,231 @@
+body {
+    background-color: #c6dcf3;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.container {
+    max-width: 400px;
+    padding: 20px;
+    border: 3px solid #2f06e4;
+    border-radius: 10px;
+}
+
+input {
+    width: 100%;
+    padding: 4px;
+    font-size: 16px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+    transition: border 0.3s;
+}
+
+/* Подсветка рамки, когда пользователь вводит текст */
+input:focus {
+    border: 2px solid #007bff;
+}
+
+button {
+    background-color: #007BFF; /* Синий фон */
+    color: white; /* Белый текст */
+    border: none; /* Убираем стандартную границу */
+    padding: 10px 20px; /* Увеличиваем размер кнопки */
+    font-size: 16px; /* Делаем текст больше */
+    font-weight: bold; /* Делаем текст жирным */
+    border-radius: 5px; /* Скругляем края */
+    cursor: pointer; /* Делаем курсор-указатель */
+    transition: background-color 0.3s, transform 0.2s; /* Плавный переход цвета и небольшая анимация */
+    margin-top: 10px;
+}
+
+/* Добавляем эффект при наведении */
+button:hover {
+    background-color: #0056b3; /* Темно-синий цвет */
+    transform: scale(1.05); /* Чуть увеличиваем кнопку */
+}
+
+/* Эффект нажатия */
+button:active {
+    background-color: #004494; /* Ещё темнее */
+    transform: scale(0.95); /* Чуть уменьшаем кнопку, создавая эффект нажатия */
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+}
+
+li {
+    margin: 5px 0;
+    padding: 10px;
+    background: #f4f4f4;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.1s;
+    animation: fadeIn 0.3s ease-out; /* Анимация появления */
+}
+
+/* Подсветка элемента при наведении */
+li:hover {
+    background: #ddd;
+}
+
+/* Анимация удаления */
+li.removed {
+    opacity: 0;
+    transform: scale(0.8);
+    transition: opacity 0.3s, transform 0.3s;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.dark-theme {
+    background-color: #121212; /* Глубокий тёмный цвет */
+    color: #ffffff; /* Белый текст */
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.dark-theme .container {
+    background: #222121; /* Тёмно-серый фон контейнера */
+    border-color: #444; /* Тёмная рамка */
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.1); /* Лёгкая подсветка */
+}
+
+.dark-theme button {
+    background-color: #2520705b; /* Тёмные кнопки */
+    color: #fff;
+    border: 1px solid #555;
+}
+
+.dark-theme button:hover {
+    background-color: #555; /* Подсветка при наведении */
+}
+
+.dark-theme li {
+    background: #262626; /* Тёмный фон задач */
+    color: white;
+    border: 1px solid #444;
+}
+
+.dark-theme li:hover {
+    background: #333; /* Ещё темнее при наведении */
+}
+
+* {
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.theme-toggle {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    padding: 8px 12px;
+    border-radius: 20px;
+    background: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    transition: background 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: #0056b3; /* Темный оттенок синего при наведении */
+}
+
+.theme-toggle:focus {
+    outline: none; /* Убираем обводку при фокусе */
+}
+
+/* Как обращаться к элементам в CSS?
+
+1. По тегу
+Применяется ко всем тегам одного типа (button, h1, h2..)
+
+    h1 {
+        color:read;
+    }
+
+Все h1 станут красными
+
+2. По классу (.)
+
+    .container {
+        width: 500px;
+    }
+
+.container - это класс, поэтому все элементы, которые находятся внутри него получают описанные стили.
+
+
+3. По id (#)
+
+    #taskInput {
+        width: 80%,
+    }
+
+#taskInput применяется только к элементу с id="taskInput".
+
+
+Таким образом:
+1) Класс (.) можно использовать для нескольких элементов.
+2) ID (#) должен быть уникальным.
+
+
+4. Вложенность (путь к элементу)
+
+    .container h1 {
+        color:blue;
+    }
+
+Все h1, которые находятся внутри container станут синими.
+
+    <div class="container">
+        <h1>Этот заголовок станет синим</h1>
+    </div>
+    <h1>А этот останется стандартным</h1>
+
+
+5. Группировка селекторов:
+
+    h1, h2, h3 {
+        font-family: Arial;
+    }
+
+Стили применяются сразу к h1, h2 и h3.
+
+
+
+6. Селекторы hover, active, focus (интерактивные эффекты)
+Можно стилизовать элемент при определенных действиях пользователя.
+
+    button:hover {
+        background-color: green;
+    }
+
+Когда пользователь наведет курсор на кнопку - она станет зеленой.
+
+
+
+    input:focus {
+        border: 2px solid blue;
+    }
+
+Когда пользователь щёлкнет на поле ввода, появится синяя обводка.
+
+
+    button:active {
+        background-color: #004494;
+        transform: scale(0,95);
+    }
+
+Когда элемент зажат, кнопка становится темнее и слегка уменьшается.
+
+*/
